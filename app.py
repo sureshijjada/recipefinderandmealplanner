@@ -30,9 +30,6 @@ recipes = [
 
 ]
 
-
-
-
 # Placeholder for the user's meal plan (could be expanded to a database)
 # meal_plan = []
 

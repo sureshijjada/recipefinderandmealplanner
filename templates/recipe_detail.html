@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.title }}</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="main-card">
+    <div class="container mt-5 text-light">
+        <!-- Navigation Bar -->
+        <nav class="nav-card">
+            <a class="navbar-brand" href="/">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.ihu18htE_zPXWi-sf0UaugHaD4&pid=Api&P=0&h=180" alt="Recipe Finder Logo" style="height: 60px; width: auto;">
+            </a> 
+            <div class="navbar-nav ml-auto">
+                <div class="d-flex gap-20px flex-direction-row justify-content-space-between">
+                    <a class="nav-item nav-link text-light" href="/">Recipe Finder</a>
+                    <!-- Fixed the typo in the href for Meal Planner -->
+                    <a class="nav-item nav-link text-light ml-3" href="/meal-planner">Meal Planner</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1 style="color:rgb(61, 237, 18)">{{ recipe.title }}</h1>
+
+        <div style=" display: flex;
+        flex-direction: row;
+        justify-content: flex-start;">
+            <div style="margin-right: 50px;">
+        <img src={{recipe.image}} class="card-img-top mt-3 mr-5" alt="RecipeImage" style="height: 300px; width: 300px; border-radius: 20px;"/>
+    </div>
+        
+<div>
+        <h4>Ingredients:</h4>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+        <h2 style="color:rgb(27, 196, 27)">Description:</h2>
+        <p>{{ recipe.description }}</p>
+
+        <a href="/" class="btn btn-warning">Back to Recipe Finder</a>
+    </div>
+</body>
+</html>

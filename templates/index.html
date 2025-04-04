@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+
+    <!-- Correct external CSS link -->
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="main-card">
+    <div class="container mt-5">
+        
+        <!-- Navigation Bar -->
+        <nav class="nav-card">
+            <a class="navbar-brand" href="/">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.ihu18htE_zPXWi-sf0UaugHaD4&pid=Api&P=0&h=180" alt="Recipe Finder Logo" style="height: 60px; width: auto;">
+            </a>
+            <div class="navbar-nav ml-auto">
+                <div class="d-flex gap-20px flex-direction-row justify-content-space-between">
+                    <a class="nav-item nav-link text-light" href="/">Recipe Finder</a>
+                    <!-- Fixed the typo in the href for Meal Planner -->
+                    <a class="nav-item nav-link text-light ml-3" href="/meal-planner">Meal Planner</a>
+                </div>
+            </div>
+        </nav>
+
+        <h1 class="mt-4 heading">Recipe Finder</h1>
+
+        <!-- Search Form -->
+        <form method="POST" action="/">
+            <div class="form-group">
+                <!-- <h1 class="mt-4 ml-auto text-light">Kitchen Companion</h1> -->
+
+                <label style="color:rgb(52, 232, 39);font-size: 20px;" for="search_query" id="search-recipe">Search Recipe by Title or Ingredients</label>
+                <input type="text" class="form-control" id="search_query" name="search_query" placeholder="Enter recipe name or ingredient" value="{{ search_query }}">
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+
+        <h3 class= "mt-5 main-text">Search Results</h3>
+        {% if recipes %}
+            <div class="row">
+                {% for recipe in recipes %}
+                    <div class="col-md-4 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ recipe.title }}</h5>
+                                <p class="card-text">{{ recipe.description[:100] }}...</p>
+                                <a href="{{ url_for('recipe_detail', recipe_id=recipe.id) }}" class="btn btn-primary">View Recipe</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-card">No recipes found matching your search.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

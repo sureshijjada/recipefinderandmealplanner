@@ -1,0 +1,78 @@
+body {
+    font-family:'Lucida  sans-serif';
+    background-color: rgb(90, 222, 197);
+    padding:10px;
+}
+
+.main-card{
+    /* background-image:linear-gradient(to right, rgb(217, 89, 217),rgb(87, 178, 223)); */
+    background-color: rgb(187, 27, 115);
+}
+.sub-card{
+    background-image:linear-gradient(to right, rgb(217, 89, 217),rgb(87, 178, 223));
+}
+.label-text{
+    color:rgb(242, 235, 221);
+}
+.heading{
+    font-size: 25px;
+    color: white;
+}
+.main-text{
+    font-size:25px;
+    color:rgb(230, 244, 223);
+}
+.sub-text{
+    font-size: 15px;
+}
+.sub-text-day{
+    font-size: 25px;
+}
+.text-card{
+    color:white;
+}
+.sub-heading{
+    font-size: 28px;
+    color: rgb(62, 218, 11);
+}
+.small-class{
+    background-image:linear-gradient(to right, rgb(217, 89, 217),rgb(87, 178, 223));
+}
+
+.navbar,.nav-card {
+    margin-bottom: 40px;
+    font-size: 1.0rem;
+}
+.text-light {
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.card-img-top {
+    height: 150px;
+    width:200px;
+    border-radius: 5px;
+    
+}
+#search-recipe{
+    color:rgb(25, 22, 81);
+    font-size: 30px;
+
+}
+.nav-card{
+    display: flex;
+     flex-direction:row;
+     justify-content:space-between;
+}
+.content {
+    padding: 30px;
+}
+.sub-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+h1, h2, h3 {
+    font-weight: bold;
+}

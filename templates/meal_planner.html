@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="main-card">
+    <div class="container mt-5 text-light">
+        <!-- Navigation Bar -->
+        <nav class="nav-card">
+            <a class="navbar-brand" href="/">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.ihu18htE_zPXWi-sf0UaugHaD4&pid=Api&P=0&h=180" alt="Recipe Finder Logo" style="height: 60px; width: auto;">
+            </a>  
+            <div class="navbar-nav ml-auto">
+                <div class="d-flex gap-20px flex-direction-row justify-content-space-between">
+                    <a class="nav-item nav-link text-light" href="/">Recipe Finder</a>
+                    <!-- Fixed the typo in the href for Meal Planner -->
+                    <a class="nav-item nav-link text-light ml-3" href="/meal-planner">Meal Planner</a>
+                </div>
+            </div>
+        </nav>
+        <h3 class="mt-4">Meal Planner</h3>
+
+        <form method="POST" action="/meal-planner">
+            <h3 style="color:rgb(51, 228, 20)">Select Meals for Your Weekly Plan</h3>
+
+            <!-- Meal Input and Day Selection -->
+            <div class="form-group mt-4 ">
+                <label for="meal">Meal Name</label>
+                <input type="text" class="form-control" id="meal" name="meal" placeholder="Enter meal name" required>
+
+                <label for="day">Select Day</label>
+                <select class="form-control" id="day" name="day" required>
+                    <option value="">Select a day</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3">Add Meal</button>
+        </form>
+
+        <h1 class="mt-4 sub-heading">Your Weekly Meal Plan</h1>
+
+        <!-- Display Meal Plan Week-wise -->
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Monday</h3>
+                {% if meal_plan.monday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.monday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p  class="sub-text">No meals planned for Monday.</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4 ">
+                <h3>Tuesday</h3>
+                {% if meal_plan.tuesday %}
+                    <ul  class="sub-text">
+                        {% for meal in meal_plan.tuesday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Tuesday.</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4 ">
+                <h3>Wednesday</h3>
+                {% if meal_plan.wednesday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.wednesday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Wednesday.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 ">
+                <h3>Thursday</h3>
+                {% if meal_plan.thursday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.thursday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Thursday.</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4 ">
+                <h3>Friday</h3>
+                {% if meal_plan.friday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.friday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Friday.</p>
+                {% endif %}
+            </div>
+            <div class="col-md-4 ">
+                <h3>Saturday</h3>
+                {% if meal_plan.saturday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.saturday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Saturday.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 ">
+                <h3>Sunday</h3>
+                {% if meal_plan.sunday %}
+                    <ul class="sub-text">
+                        {% for meal in meal_plan.sunday %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="sub-text">No meals planned for Sunday.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
